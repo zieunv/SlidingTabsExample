@@ -12,17 +12,35 @@ class UISimpleSlidingTabController: UIViewController {
     
     private let collectionHeader = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     private let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    private let collectionHeaderIdentifier = "COLLECTION_HEADER_IDENTIFIER"
-    private let collectionPageIdentifier = "COLLECTION_PAGE_IDENTIFIER"
+    private let collectionHeaderIdentifier = "CollectionHeaderID"
+    private let collectionPageIdentifier = "CollectionPageID"
+  
     private var items = [UIViewController]()
     private var titles = [String]()
+  
     private var colorHeaderActive = UIColor.blue
     private var colorHeaderInActive = UIColor.gray
     private var colorHeaderBackground = UIColor.white
+  
     private var currentPosition = 0
     private var tabStyle = SlidingTabStyle.fixed
     private let heightHeader = 57
-    
+  
+    override func viewWillLayoutSubviews() {
+      super.viewWillLayoutSubviews()
+      collectionHeader.collectionViewLayout.invalidateLayout()
+      collectionPage.collectionViewLayout.invalidateLayout()
+      
+      let pageOffset = CGPoint(
+        // for landscape mode
+        x: Int((self.view.bounds.width)) * currentPosition ,
+        y: 0
+      )
+      
+      self.collectionPage.setContentOffset(pageOffset, animated: false)
+      self.collectionPage.reloadData()
+    }
+  
     func addItem(item: UIViewController, title: String){
         items.append(item)
         titles.append(title)
