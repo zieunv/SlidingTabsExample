@@ -55,10 +55,9 @@ override func viewWillLayoutSubviews() {
 
 
 
-* setContentOffset 메서드에 대한 자료는 [ 요기 ](https://developer.apple.com/documentation/uikit/uiscrollview/1619400-setcontentoffset“appleDoc”) 
+* setContentOffset 메서드에 대한 자료는 [ 요기 ](https://developer.apple.com/documentation/uikit/uiscrollview/1619400-setcontentoffset) 
 
 
  
  
    
-  
