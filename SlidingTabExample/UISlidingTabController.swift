@@ -73,6 +73,7 @@ class UISimpleSlidingTabController: UIViewController {
         DispatchQueue.main.async {
            self.collectionPage.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
         }
+      self.collectionPage.reloadData()
     }
     
     func setStyle(style: SlidingTabStyle){
@@ -232,7 +233,7 @@ extension UISimpleSlidingTabController: UICollectionViewDelegateFlowLayout{
                 return CGSize(width: view.frame.width * 20 / 100, height: CGFloat(heightHeader))
             }
         }
-        
+    //    print("++ viewframe 값 \(view.frame)")
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
